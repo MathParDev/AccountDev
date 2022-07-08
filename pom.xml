@@ -21,8 +21,8 @@
 	</properties>
 
 	<scm>
-		<url>https://github.com/MathparLearningTeam/Account</url>
-		<developerConnection>svm:git:https://github.com/MathparLearningTeam/Account</developerConnection>
+		<url>https://github.com/MathParDev/AccountDev</url>
+		<developerConnection>svm:git:https://github.com/MathParDev/AccountDev</developerConnection>
 	  <tag>HEAD</tag>
   </scm>
 
@@ -185,7 +185,7 @@
 		<repository>
 			<id>github-mathpar</id>
 			<name>GitHub packages repository</name>
-			<url>https://maven.pkg.github.com/MathparLearningTeam/Account</url>
+			<url>https://maven.pkg.github.com/MathParDev/AccountDev</url>
 		</repository>
 	</distributionManagement>
 </project>
