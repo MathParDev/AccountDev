@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.client.RestTemplate;
 
 @Getter
+@Slf4j
 @NoArgsConstructor
 public class MathparProperties {
     private String databaseUsername;
@@ -32,6 +34,7 @@ public class MathparProperties {
         if(emailingProperties==null) throw new RuntimeException("Can't load mailing properties..");
         this.mailHost = emailingProperties.mailerHost;
         this.mailPort = Integer.parseInt(emailingProperties.mailerPort);
+        log.info("MAILER PORT: " + this.mailPort);
         this.mailUsername = emailingProperties.mailerUsername;
         this.mailPassword = emailingProperties.mailerPassword;
     }
