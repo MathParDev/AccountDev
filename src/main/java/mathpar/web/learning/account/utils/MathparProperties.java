@@ -33,8 +33,9 @@ public class MathparProperties {
         var emailingProperties = restTemplate.getForObject(secretmanagerUrlPrefix+"/getNamespaceProperties?namespace=emailing", MailerProperties.class);
         if(emailingProperties==null) throw new RuntimeException("Can't load mailing properties..");
         this.mailHost = emailingProperties.mailerHost;
+        log.info("MAILER PORT: " + emailingProperties.mailerPort);
         this.mailPort = Integer.parseInt(emailingProperties.mailerPort);
-        log.info("MAILER PORT: " + this.mailPort);
+
         this.mailUsername = emailingProperties.mailerUsername;
         this.mailPassword = emailingProperties.mailerPassword;
     }
