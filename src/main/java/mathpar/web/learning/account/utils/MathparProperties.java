@@ -43,13 +43,13 @@ public class MathparProperties {
 
     @Data
     public static class AuthenticationProperties {
-        @JsonProperty("DatabaseUrl")
+        @JsonProperty("databaseUrl")
         private String databaseUrl;
-        @JsonProperty("DatabaseUsername")
+        @JsonProperty("databaseUsername")
         private String databaseUsername;
-        @JsonProperty("DatabasePassword")
+        @JsonProperty("databasePassword")
         private String databasePassword;
-        @JsonProperty("SchoolUrl")
+        @JsonProperty("schoolUrl")
         private String schoolUrl;
     }
 
