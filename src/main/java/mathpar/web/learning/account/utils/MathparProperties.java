@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 @Getter
@@ -24,7 +25,9 @@ public class MathparProperties {
 
     public void loadPropertiesFromManager(String secretmanagerUrlPrefix) {
         RestTemplate restTemplate = new RestTemplate();
-        var namespaceProperties = restTemplate.getForObject(secretmanagerUrlPrefix+"/getNamespaceProperties?namespace=account", AuthenticationProperties.class);
+        var namespaceProperties1 = restTemplate.getForObject(secretmanagerUrlPrefix+"/getNamespaceProperties?namespace=account", AuthenticationProperties.class).toString();
+        log.info("DEBUG NAMESPACE: " + namespaceProperties1);
+        AuthenticationProperties namespaceProperties = restTemplate.getForObject(secretmanagerUrlPrefix+"/getNamespaceProperties?namespace=account", AuthenticationProperties.class);
         log.info("namespaceProperties: " + namespaceProperties);
         if(namespaceProperties==null) throw new RuntimeException("Can't load authentication properties");
         this.databasePassword = namespaceProperties.databasePassword;
