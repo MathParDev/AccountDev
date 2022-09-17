@@ -25,10 +25,7 @@ public class MathparProperties {
 
     public void loadPropertiesFromManager(String secretmanagerUrlPrefix) {
         RestTemplate restTemplate = new RestTemplate();
-        var namespaceProperties1 = restTemplate.getForObject(secretmanagerUrlPrefix+"/getNamespaceProperties?namespace=account", AuthenticationProperties.class).toString();
-        log.info("DEBUG NAMESPACE: " + namespaceProperties1);
         AuthenticationProperties namespaceProperties = restTemplate.getForObject(secretmanagerUrlPrefix+"/getNamespaceProperties?namespace=account", AuthenticationProperties.class);
-        log.info("namespaceProperties: " + namespaceProperties);
         if(namespaceProperties==null) throw new RuntimeException("Can't load authentication properties");
         this.databasePassword = namespaceProperties.databasePassword;
         this.databaseUsername = namespaceProperties.databaseUsername;
@@ -37,9 +34,7 @@ public class MathparProperties {
         var emailingProperties = restTemplate.getForObject(secretmanagerUrlPrefix+"/getNamespaceProperties?namespace=emailing", MailerProperties.class);
         if(emailingProperties==null) throw new RuntimeException("Can't load mailing properties..");
         this.mailHost = emailingProperties.mailerHost;
-        log.info("MAILER PORT: " + emailingProperties.mailerPort);
         this.mailPort = Integer.parseInt(emailingProperties.mailerPort);
-
         this.mailUsername = emailingProperties.mailerUsername;
         this.mailPassword = emailingProperties.mailerPassword;
     }
